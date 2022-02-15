@@ -1,7 +1,6 @@
 package com.eCommerce.eCommerceEggs.Dominio;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -21,10 +20,6 @@ public class Eggs implements Serializable {
     private Long stock;
     @Column
     private Float price;
-
-    @OneToMany
-    @JoinColumn(name = "egg_id")
-    private List<Eggs> eggs;
 
     public Eggs() {
     }
@@ -60,12 +55,4 @@ public class Eggs implements Serializable {
     public void setPrice(Float price) {
         this.price = price;
     }  
-
-    public List<Eggs> getEggs() {
-        return this.eggs;
-    }
-
-    public void setEggs(List<Eggs> eggs) {
-        this.eggs = eggs;
-    }
 }

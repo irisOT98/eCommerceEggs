@@ -1,6 +1,7 @@
 package com.eCommerce.eCommerceEggs.Dominio;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -19,6 +20,10 @@ public class Sells implements Serializable {
     private Float total;
     @Column
     private String sellDate;
+
+    @OneToMany
+    @JoinColumn(name = "egg_id")
+    private List<Eggs> eggs;
 
     public Sells() {
     }
@@ -53,5 +58,13 @@ public class Sells implements Serializable {
 
     public void setSellDate(String sellDate) {
         this.sellDate = sellDate;
+    }
+
+    public List<Eggs> getEggs() {
+        return this.eggs;
+    }
+
+    public void setEggs(List<Eggs> eggs) {
+        this.eggs = eggs;
     }
 }

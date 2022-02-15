@@ -59,9 +59,9 @@
         <td th:text="${product.description}"></td>
         <td th:text="${product.quantity}"></td>
         <td th:text="${product.price}"></td>
-        <td th:text="${product.carton.cartonSize}"></td>
+        <!-- <td th:text="${product.carton.cartonSize}"></td> -->
         <td><a  class="btn btn-warning" th:href="@{products/edit/} + ${product.idProduct}" >Editar</a> </td>
-        <td><a  class="btn btn-danger" href="">Eliminar</a> </td>
+        <td><a  class="btn btn-danger" th:href="@{products/delete/} + ${product.idProduct}">Eliminar</a> </td>
       </tr>       
     </tbody>
   </table>

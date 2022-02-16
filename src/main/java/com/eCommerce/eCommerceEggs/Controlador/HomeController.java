@@ -3,6 +3,8 @@ package com.eCommerce.eCommerceEggs.Controlador;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import com.eCommerce.eCommerceEggs.Dominio.Products;
 import com.eCommerce.eCommerceEggs.Dominio.Sells;
@@ -67,8 +69,14 @@ public class HomeController {
 		sellDetails.setTotal(products.getPrice() * quantity);
 		sellDetails.setProducts(products);
 
-        details.add(sellDetails);
-
+        // Validar que el producto en el carrito no se repita
+        Long idProd = products.getIdProduct();
+        boolean ingresado = details.stream().anyMatch(p -> p.getProducts().getIdProduct()==idProd);
+		
+		if (!ingresado) {
+			details.add(sellDetails);
+		}
+        
         sumTot = (float) details.stream().mapToDouble(dt -> dt.getTotal()).sum();
 
         sell.setTotal(sumTot);
@@ -102,5 +110,21 @@ public class HomeController {
 		model.addAttribute("sell", sell);
         
         return "user/carrito";
+    }
+
+    @GetMapping("/getCart")
+    public String getCart(Model model) {
+
+        model.addAttribute("cart", details);
+		model.addAttribute("sell", sell);
+        return "/user/carrito";
+    }
+
+    @PostMapping("/search")
+    public String searchProduct(@RequestParam String nombre, Model model) {
+        log.info("Nombre del producto: {}", nombre);
+        List<Products> products = productService.readProducts().stream().filter( p ->p.getNameProduct().contains(nombre)).collect(Collectors.toList());
+        model.addAttribute("products", products);
+        return "user/home";
     }
 }

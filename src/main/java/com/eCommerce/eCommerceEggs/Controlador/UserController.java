@@ -10,6 +10,7 @@ import com.eCommerce.eCommerceEggs.Service.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,9 @@ public class UserController {
 	@Autowired
 	private UserServiceImpl userService;
 
+/*     @Autowired
+	private BCryptPasswordEncoder pswdEncode = new BCryptPasswordEncoder(); */
+
     // /user/registro
 	@GetMapping("/register")
 	public String create() {
@@ -36,6 +40,7 @@ public class UserController {
     public String save(Users user) {
         logger.info("Usuario registro: {}", user);
         user.setType("USER");
+/*         user.setPassword(pswdEncode.encode(user.getPassword())); */
         userService.save(user);
 		return "redirect:/";
     }

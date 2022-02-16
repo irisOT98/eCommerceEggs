@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Spring eCommerce</title>
+  <title>eCommerce Eggs</title>
 
   <!-- Bootstrap core CSS -->
   <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
@@ -30,75 +30,69 @@
 
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Productos</small>
+        eCommerce Eggs <small>Products</small>
       </h1>
 
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item active">Actualizar Producto</li>
+        <li class="breadcrumb-item"><a th:href="@{/administrator}">Home</a></li>
+        <li class="breadcrumb-item active">Product Update</li>
       </ol>
 
-      <h2>Actualizar Producto</h2>
-      <form class="form-horizontal" th:action="@{/products/update}" method="post" enctype="multipart/form-data" >
-        <input type="hidden" name="id" th:value="${product.idProduct}">    
+      <h2>Product Update</h2>
+      <form class="form-horizontal" th:action="@{/products/update}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="idProduct" th:value="${product.idProduct}">    
         <div class="form-group">
-          <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+          <label class="control-label col-sm-2" for="nameProduct">Name:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre del producto" required autocomplete="off" th:value="${product.nameProduct}">
+            <input type="text" class="form-control" id="nameProduct" name="nameProduct" placeholder="Ingrese el nombre del producto" required autocomplete="off" th:value="${product.nameProduct}">
             <div id="prueba"></div>  
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-sm-2" for="descripcion">Descripción:</label>
+          <label class="control-label col-sm-2" for="description">Description:</label>
           <div class="col-sm-10">          
-            <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese la descripcion del producto" required autocomplete="off" th:text="${product.description}"> </textarea>
+            <textarea class="form-control" id="description" name="description" placeholder="Ingrese la descripcion del producto" required autocomplete="off" th:text="${product.description}"> </textarea>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="control-label col-sm-2" for="cantidad">Cantidad:</label>
+          <label class="control-label col-sm-2" for="quantity">Quantity:</label>
           <div class="col-sm-10">          
-            <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Ingrese la cantidad del producto" th:value="${product.quantity}" required autocomplete="off">
+            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Ingrese la cantidad del producto" th:value="${product.quantity}" required autocomplete="off">
           </div>
         </div>
 
         <div class="form-group">
-          <label class="control-label col-sm-2" for="precio">Precio:</label>
+          <label class="control-label col-sm-2" for="price">Price:</label>
           <div class="col-sm-10">          
-            <input type="number" class="form-control" step="any"  id="precio" name="precio" placeholder="Ingrese el precio del producto" th:value="${product.price}" required autocomplete="off">
+            <input type="number" class="form-control" step="any"  id="price" name="price" placeholder="Ingrese el precio del producto" th:value="${product.price}" required autocomplete="off">
           </div>
         </div>
 
         <div class="form-group">
-          <label class="control-label col-sm-2" for="typeCarton">Cartón:</label>
+          <label class="control-label col-sm-2" for="cartonSize">Carton Size:</label>
           <div class="col-sm-10">          
-            <input type="text" class="form-control" step="any"  id="typeCarton" name="typeCarton" placeholder="Ingrese el tamaño del cartón" th:value="${product.cartonSize}" required autocomplete="off">
+            <input type="text" class="form-control" step="any"  id="cartonSize" name="cartonSize" placeholder="Ingrese el tamaño del cartón" th:value="${product.cartonSize}" required autocomplete="off">
           </div>
         </div>
 
         <div class="form-group">
-          <label class="control-label col-sm-2" for="capacityCarton">Tipo de Cartón:</label>
+          <label class="control-label col-sm-6" for="cartonCapacity">Carton Capacity:</label>
           <div class="col-sm-10">          
-            <input type="text" class="form-control" step="any"  id="capacityCarton" name="capacityCarton" placeholder="Ingrese la capacidad del cartón" th:value="${product.cartonCapacity}" required autocomplete="off">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label  class="control-label col-sm-2" for="img">Imagen:</label>
-          <div class="col-sm-10">  
-            <input type="file" class="form-control-file" id="img" name="img">
+            <input type="text" class="form-control" step="any"  id="cartonCapacity" name="cartonCapacity" placeholder="Ingrese la capacidad del cartón" th:value="${product.cartonCapacity}" required autocomplete="off">
           </div>
         </div>
 
         <div class="row">
           <div class="col-sm-2">
-            <button type="submit" class="btn btn-success"> Guardar</button>
+            <button type="submit" class="btn btn-primary">Save</button>
           </div>             
         </div>
 
       </form>
 
     </div>
+    <br><br>
     <!-- /.container -->
 
     <!-- Footer -->

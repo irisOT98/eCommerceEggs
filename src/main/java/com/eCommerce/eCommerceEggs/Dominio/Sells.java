@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name="sells")
 public class Sells implements Serializable {
 
     private static final long serialVersionUID = 1L;

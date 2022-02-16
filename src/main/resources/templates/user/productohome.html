@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Spring eCommerce</title>
+  <title>eCommerce Eggs | Product Details</title>
 
 
   <!-- Bootstrap core CSS -->
@@ -30,12 +30,12 @@
 
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Producto</small>
+        eCommerce Eggs <small>Product</small>
       </h1>
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-        <li class="breadcrumb-item active">Producto</li>
+        <li class="breadcrumb-item active">Product</li>
       </ol>
 
       <!-- Blog Post -->
@@ -44,28 +44,28 @@
           <div class="row">
             <div class="col-lg-6">
               <a href="#"> <img class="img-fluid rounded"
-                src="http://placehold.it/500x325"  alt="">
+                th:src="${product.image}"  alt="">
               </a>
             </div>
             <div class="col-lg-6">
               <form th:action="@{/cart}" method="POST">
                 <input type="hidden" th:value="${product.idProduct}" name="idProduct">
                 
-                <h2 class="card-title" th:text="${product.nameProduct}">Nombre producto</h2>
+                <h2 class="card-title" th:text="${product.nameProduct}">Product</h2>
 
                 <ul class="list-group">
-                  <li class="list-group-item" ><h5 th:text="'Precio: $' + ${product.price}">Precio: </h5></li>
+                  <li class="list-group-item" ><h5 th:text="'Precio: $' + ${product.price}">Price: </h5></li>
                   <li class="list-group-item">
-                    <p th:text="'Descripción: ' + ${product.description}">Descripción:</p>
+                    <h6><p th:text="'Description: ' + ${product.description}">Description:</p></h6>
                   </li>
                   <li class="list-group-item"><h6>
-                    Cantidad: <input type="number" id="quantity" name="quantity" autocomplete="off"
+                    Quantity: <input type="number" id="quantity" name="quantity" autocomplete="off"
                     min="1" max="5" value="1">
                   </h6></li>
                 </ul>
 
                 <br>
-                <button type="submit"  class="btn btn-primary">Añadir al carrito </button>
+                <button type="submit"  class="btn btn-primary">Add Cart </button>
 
               </form>
             </div>

@@ -46,7 +46,7 @@ public class ProductController {
     @PostMapping("/update")
 	public String update(Products product) {
 		productService.update(product);		
-		return "redirect:/productos";
+		return "redirect:/products";
 	}
 
     @GetMapping("/edit/{idProduct}")

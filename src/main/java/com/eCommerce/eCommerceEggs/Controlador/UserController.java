@@ -66,5 +66,10 @@ public class UserController {
         }
         return "redirect:/";
     }
-    
+
+    @GetMapping("/end")
+    public String endSession(HttpSession session){
+        session.removeAttribute("iduser");
+        return "redirect:/";
+    }
 }

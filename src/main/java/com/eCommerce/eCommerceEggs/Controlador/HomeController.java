@@ -6,6 +6,8 @@ import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpSession;
+
 import com.eCommerce.eCommerceEggs.Dominio.Products;
 import com.eCommerce.eCommerceEggs.Dominio.Sells;
 import com.eCommerce.eCommerceEggs.Dominio.SellsDetails;
@@ -39,9 +41,16 @@ public class HomeController {
     Sells sell = new Sells();
 
     @GetMapping("")
-    public String home(Model model){
+    public String home(Model model, HttpSession session){
         ArrayList<Products> products = (ArrayList<Products>) productService.readProducts();
+        
+        log.info("Sesion de usuario: {}", session.getAttribute("iduser"));
+        
         model.addAttribute("products", products);
+
+        // session
+        model.addAttribute("sesion", session.getAttribute("iduser"));
+
         return "user/home";
     }
 
@@ -113,10 +122,13 @@ public class HomeController {
     }
 
     @GetMapping("/getCart")
-    public String getCart(Model model) {
+    public String getCart(Model model, HttpSession session) {
 
         model.addAttribute("cart", details);
 		model.addAttribute("sell", sell);
+
+        //sesion
+        model.addAttribute("sesion", session.getAttribute("iduser"));
         return "/user/carrito";
     }
 

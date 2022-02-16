@@ -5,9 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="sells")
 public class Sells implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -15,17 +14,23 @@ public class Sells implements Serializable {
     private Long idSell;
 
     @Column
-    private Float cartonsQuantity;
+    private String num;
+    @Column
+    private String creation;
+    @Column
+    private String receive;
     @Column
     private Float total;
-    @Column
-    private String sellDate;
-
-    @OneToMany
-    @JoinColumn(name = "egg_id")
-    private List<Eggs> eggs;
 
     public Sells() {
+    }
+
+    public Sells(Long idSell, String num, String creation, String receive, Float total) {
+        this.idSell = idSell;
+        this.num = num;
+        this.creation = creation;
+        this.receive = receive;
+        this.total = total;
     }
 
     public Long getIdSell() {
@@ -36,12 +41,28 @@ public class Sells implements Serializable {
         this.idSell = idSell;
     }
 
-    public Float getCartonsQuantity() {
-        return this.cartonsQuantity;
+    public String getNum() {
+        return this.num;
     }
 
-    public void setCartonsQuantity(Float cartonsQuantity) {
-        this.cartonsQuantity = cartonsQuantity;
+    public void setNum(String num) {
+        this.num = num;
+    }
+
+    public String getCreation() {
+        return this.creation;
+    }
+
+    public void setCreation(String creation) {
+        this.creation = creation;
+    }
+
+    public String getReceive() {
+        return this.receive;
+    }
+
+    public void setReceive(String receive) {
+        this.receive = receive;
     }
 
     public Float getTotal() {
@@ -52,19 +73,15 @@ public class Sells implements Serializable {
         this.total = total;
     }
 
-    public String getSellDate() {
-        return this.sellDate;
+    @Override
+    public String toString() {
+        return "{" +
+            " idSell='" + getIdSell() + "'" +
+            ", num='" + getNum() + "'" +
+            ", creation='" + getCreation() + "'" +
+            ", receive='" + getReceive() + "'" +
+            ", total='" + getTotal() + "'" +
+            "}";
     }
 
-    public void setSellDate(String sellDate) {
-        this.sellDate = sellDate;
-    }
-
-    public List<Eggs> getEggs() {
-        return this.eggs;
-    }
-
-    public void setEggs(List<Eggs> eggs) {
-        this.eggs = eggs;
-    }
 }

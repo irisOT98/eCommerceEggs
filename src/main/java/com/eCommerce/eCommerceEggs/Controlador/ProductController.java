@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 @RequestMapping("/products")
 public class ProductController {
@@ -31,15 +32,21 @@ public class ProductController {
     }
 
     @GetMapping("/create")
-    public String create(){
+    public String create(Products products){
         return "products/create";
     }
 
     @PostMapping("/save")
 	public String save(Products product) {
-		LOGGER.info("Este es el objeto producto {}",product);
-		productService.saveP(product);
+		//LOGGER.info("Este es el objeto producto {}",product);	
+        productService.saveP(product);
         return "redirect:/products";
+	}
+
+    @PostMapping("/update")
+	public String update(Products product) {
+		productService.update(product);		
+		return "redirect:/productos";
 	}
 
     @GetMapping("/edit/{idProduct}")
@@ -50,7 +57,7 @@ public class ProductController {
     }
 
     @GetMapping("/delete/{idProduct}")
-    public String delete(@PathVariable Long idProduct){
+    public String delete(@PathVariable Long idProduct){        
         productService.deleteP(idProduct);
         return "redirect:/products";
     }

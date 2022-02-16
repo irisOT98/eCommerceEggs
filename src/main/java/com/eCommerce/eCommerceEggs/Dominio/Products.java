@@ -19,26 +19,32 @@ public class Products implements Serializable {
     @Column
     private String description;
     @Column
-    private Long quantity;
+    private Integer quantity;
     @Column
     private Float price;
+    @Column
+    private String cartonSize;
+    @Column
+    private Integer cartonCapacity;
+    @Column
+    private String image;
 
-    @ManyToOne
-    @JoinColumn(name = "carton_id")
-    private Cartons carton;
-
+    
     public Products() {
     }
 
-    public Products(Long idProduct, String nameProduct, String description, Long quantity, Float price, Cartons carton) {
+    public Products(Long idProduct, String nameProduct, String description, Integer quantity, Float price, String cartonSize, Integer cartonCapacity, String image) {
         this.idProduct = idProduct;
         this.nameProduct = nameProduct;
         this.description = description;
         this.quantity = quantity;
         this.price = price;
-        this.carton = carton;
+        this.cartonSize = cartonSize;
+        this.cartonCapacity = cartonCapacity;
+        this.image = image;
     }
-    
+
+
     public Long getIdProduct() {
         return this.idProduct;
     }
@@ -63,11 +69,11 @@ public class Products implements Serializable {
         this.description = description;
     }
 
-    public Long getQuantity() {
+    public Integer getQuantity() {
         return this.quantity;
     }
 
-    public void setQuantity(Long quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
@@ -79,11 +85,28 @@ public class Products implements Serializable {
         this.price = price;
     }
 
-    public Cartons getCarton() {
-        return this.carton;
+    public String getCartonSize() {
+        return this.cartonSize;
     }
 
-    public void setCarton(Cartons carton) {
-        this.carton = carton;
+    public void setCartonSize(String cartonSize) {
+        this.cartonSize = cartonSize;
     }
+
+    public Integer getCartonCapacity() {
+        return this.cartonCapacity;
+    }
+
+    public void setCartonCapacity(Integer cartonCapacity) {
+        this.cartonCapacity = cartonCapacity;
+    }
+
+    public String getImage() {
+        return this.image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }   
+    
 }

@@ -40,7 +40,7 @@
   </ol>
 
   <h2>Crear Producto</h2>
-  <form class="form-horizontal" th:action="@{products/save}" method="post" enctype="multipart/form-data" th:object="${products}">
+  <form class="form-horizontal" th:action="@{/products/save}" method="post" enctype="multipart/form-data" th:object="${products}">
     <input type="hidden" name="idProduct" th:field="*{idProduct}"/>
     <div class="form-group">
       <label class="control-label col-sm-2" for="nombre">Nombre:</label>
@@ -78,8 +78,16 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="typeCarton">Tipo de cartón:</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" step="any" id="typeCarton" name="typeCarton" th:field="*{carton}"
+        <input type="text" class="form-control" step="any" id="typeCarton" name="typeCarton" th:field="*{cartonSize}"
         placeholder="Ingrese el tipo de cartón" autocomplete="off" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="capacityCarton">Capacidad del cartón:</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" step="any" id="capacityCarton" name="capacityCarton" th:field="*{cartonCapacity}"
+        placeholder="Ingrese la capacidad del cartón" autocomplete="off" required>
       </div>
     </div>
 

@@ -49,6 +49,7 @@
         <th scope="col">Inventario</th>
         <th scope="col">Precio</th>
         <th scope="col">Cartón</th>
+        <th scope="col">Capacidad</th>
         <th scope="col">Acción</th>
         <th scope="col">Acción</th>
       </tr>
@@ -59,7 +60,8 @@
         <td th:text="${product.description}"></td>
         <td th:text="${product.quantity}"></td>
         <td th:text="${product.price}"></td>
-        <!-- <td th:text="${product.carton.cartonSize}"></td> -->
+        <td th:text="${product.cartonSize}"></td>
+        <td th:text="${product.cartonCapacity}"></td>
         <td><a  class="btn btn-warning" th:href="@{products/edit/} + ${product.idProduct}" >Editar</a> </td>
         <td><a  class="btn btn-danger" th:href="@{products/delete/} + ${product.idProduct}">Eliminar</a> </td>
       </tr>       

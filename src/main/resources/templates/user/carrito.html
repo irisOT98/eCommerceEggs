@@ -60,7 +60,7 @@
                   <td th:text="${dsell.price}">Precio</td>
                   <td th:text="${dsell.quantity}">Cantidad</td>
                   <td th:text="${dsell.total}">Total</td>
-                  <td><a href="#" class="btn btn-danger">Quitar</a></td>
+                  <td><a th:href="@{/delete/cart/} + ${dsell.products.idProduct}" class="btn btn-danger">Quitar</a></td>
                 </tr>
               </tbody>
             </table>

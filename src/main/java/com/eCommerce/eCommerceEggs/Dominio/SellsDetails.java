@@ -86,5 +86,4 @@ public class SellsDetails implements Serializable {
     public void setProducts(Products products) {
         this.products = products;
     }
-    
 }

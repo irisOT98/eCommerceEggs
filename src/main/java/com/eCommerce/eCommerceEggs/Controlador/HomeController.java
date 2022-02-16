@@ -77,4 +77,30 @@ public class HomeController {
 
         return "user/carrito";
     }
+
+    // Quit product of cart
+    @GetMapping("delete/cart/{idProduct}")
+    public String deleteProductCart(@PathVariable Long idProduct, Model model){
+        
+        // List new products cart
+        List<SellsDetails> sellsNews = new  ArrayList<SellsDetails>();
+        
+        for (SellsDetails sellDetails : details) {
+			if (sellDetails.getProducts().getIdProduct() != idProduct) {
+				sellsNews.add(sellDetails);
+			}
+		}
+
+		// Poner la nueva lista con los productos restantes
+		details = sellsNews;
+
+		double sumTot = 0;
+		sumTot = details.stream().mapToDouble(dt -> dt.getTotal()).sum();
+
+		sell.setTotal((float) sumTot);
+		model.addAttribute("cart", details);
+		model.addAttribute("sell", sell);
+        
+        return "user/carrito";
+    }
 }
